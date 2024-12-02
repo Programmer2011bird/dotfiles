@@ -1,0 +1,76 @@
+{
+  "layer": "top",
+  "position": "right",
+  "spacing": 1,
+  "modules-left": [
+    "clock",
+    "custom/sep",
+    "network",
+    "custom/sep",
+    "tray",
+    "custom/sep",
+    "battery",
+  ],
+  "modules-center": [
+    "hyprland/workspaces",
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "custom/powermenu"
+  ],
+  "custom/sep": {
+    "format": "──"
+  },
+  "custom/powermenu": {
+    "on-click": "cd ~/.config/rofi/scripts && ./rofi-powermenu.sh",
+    "format": "",
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "format-icons": {
+      "active": "",
+      "urgent": "",
+      "default": ""
+    }
+  },
+  "clock": {
+    "tooltip": true,
+    "format": "{:%H\n%M}",
+    "tooltip-format": "{:%Y-%m-%d}",
+  },
+  "tray": {
+    "icon-size": 18,
+    "show-passive-items": "true"
+  },
+  "pulseaudio": {
+    "rotate": 90,
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-muted": "MUTE ",
+    "format-icons": {
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 3,
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+  },
+  "battery": {
+    "rotate": 90,
+    "states": {
+        "good": 95,
+        "warning": 30,
+        "critical": 15
+    },
+    "format": "{capacity}",
+  },
+  "network": {
+    "rotate": 90
+  }
+}
