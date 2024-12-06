@@ -17,8 +17,13 @@ if [[ -z "$TMUX" ]]; then
         tmux attach-session
     else
         # Start a new tmux session
-        tmux new-session -s default
+        tmux new-session 
     fi
 fi
 
 eval "$(oh-my-posh init bash --config ~/.config/.poshthemes/theUnnamed.omp.json)"
+
+export GTK_THEME=BetterGruvbox
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+neofetch 
