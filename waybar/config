@@ -8,13 +8,13 @@
     "network",
     "custom/sep",
     "tray",
-    "custom/sep",
-    "battery",
   ],
   "modules-center": [
     "hyprland/workspaces",
   ],
   "modules-right": [
+    "battery",
+    "custom/sep",
     "pulseaudio",
     "custom/powermenu"
   ],
@@ -22,7 +22,7 @@
     "format": "──"
   },
   "custom/powermenu": {
-    "on-click": "cd ~/.config/rofi/scripts && ./rofi-powermenu.sh",
+    "on-click": "cd ~/.config/waybar/scripts && ./rofi-powermenu.sh",
     "format": "",
     "tooltip": false
   },
@@ -48,7 +48,7 @@
   },
   "pulseaudio": {
     "rotate": 90,
-    "format": "{icon} {volume}%",
+    "format": "{icon}  {volume}%",
     "format-bluetooth": "{icon} {volume}%",
     "format-muted": "MUTE ",
     "format-icons": {
@@ -68,7 +68,16 @@
         "warning": 30,
         "critical": 15
     },
-    "format": "{capacity}",
+    "format-icons": {
+        "default":[
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "format": "{icon}   {capacity}",
   },
   "network": {
     "rotate": 90

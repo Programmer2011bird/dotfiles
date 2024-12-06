@@ -20,8 +20,7 @@ tooltip {
   color: #83a598;
   background-color: #32302f;
   text-shadow: none;
-}
-
+} 
 tooltip * {
   color: #83a598;
   text-shadow: none;
@@ -29,7 +28,6 @@ tooltip * {
 .modules-center {
     padding: 15px 2 15 0 ;
 }
-
 #custom-sep {
   color: #7c6f64;
   margin: 2px 0;
