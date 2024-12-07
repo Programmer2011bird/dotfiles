@@ -3,6 +3,6 @@
 #
 # Syntax: simple "KEY=VAL" pairs on separate lines
 #
-GTK_THEME=BetterGruvbox
+GTK_THEME=gruvbox-dark-gtk
 GTK2_RC_FILES=$HOME/.gtkrc-2.0
 QT_QPA_PLATFORMTHEME=gtk2
