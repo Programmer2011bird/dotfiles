@@ -9,6 +9,6 @@ background_tint 0.8
 
 
 # BEGIN_KITTY_THEME
-# Gruvbox Dark Hard
+# Everforest Dark Hard
 include current-theme.conf
 # END_KITTY_THEME
