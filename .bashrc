@@ -23,7 +23,7 @@ fi
 
 eval "$(oh-my-posh init bash --config ~/.config/.poshthemes/theUnnamed.omp.json)"
 
-export GTK_THEME=BetterGruvbox
+export GTK_THEME=gruvbox-dark-gtk
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 neofetch 
