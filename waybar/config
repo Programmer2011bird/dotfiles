@@ -1,0 +1,100 @@
+{
+  "layer": "top",
+  "position": "top",
+  "spacing": 1,
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/sep",
+    "network",
+    "custom/sep",
+    "tray",
+  ],
+  "modules-center": [
+    "clock",
+  ],
+  "modules-right": [
+    "battery",
+    "custom/sep",
+    "cpu",
+    "custom/sep",
+    "memory",
+    "custom/sep",
+    "pulseaudio",
+    "custom/powermenu"
+  ],
+  "custom/sep": {
+    "format": "|"
+  },
+  "custom/powermenu": {
+    "on-click": "cd ~/.config/waybar/scripts && ./rofi-powermenu.sh",
+    "format": "",
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "format-icons": {
+      "active": "",
+      "urgent": "",
+      "default": ""
+    }
+  },
+  "clock": {
+    "tooltip": true,
+    "format": "{:%H:%M}",
+    "tooltip-format": "{:%Y-%m-%d}",
+  },
+  "tray": {
+    "icon-size": 18,
+    "show-passive-items": "true"
+  },
+  "pulseaudio": {
+    // "rotate": 90,
+    "format": "{icon}  {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-muted": "MUTE ",
+    "format-icons": {
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 3,
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+  },
+  "battery": {
+    // "rotate": 90,
+    "states": {
+        "good": 95,
+        "warning": 30,
+        "critical": 15
+    },
+    "format-icons": {
+        "default":[
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "format": "{icon}   {capacity}%",
+    "format-charging": "  {capacity}%",
+  },
+  "network": {
+    // "rotate": 90,
+    "format-wifi": "{essid}  ",
+    "format-disconnected": "Disconnected 󰖪 ",
+  },
+  "cpu":{
+    // "rotate":90,
+    "format":"   {usage}%"
+  },
+  "memory":{
+    // "rotate":90,
+    "format":"   {}%"
+  },
+}
