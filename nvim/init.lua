@@ -29,6 +29,7 @@ require("gruvbox").setup({
 require('lualine').setup({
     options = { theme = "gruvbox-material" }
 })
+
 require("nvim-tree").setup({
   sort = {
     sorter = "case_sensitive",
@@ -50,6 +51,9 @@ require('lspconfig')['lua_ls'].setup {
     capabilities = capabilities
 }
 require('lspconfig')['pyright'].setup {
+    capabilities = capabilities
+}
+require('lspconfig')['html'].setup {
     capabilities = capabilities
 }
 require("nvim-autopairs").setup({})

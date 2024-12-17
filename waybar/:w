@@ -8,12 +8,13 @@
 
 window#waybar {
   color: #bdae93;
+  background-color: #282828;
 }
 .modules-left,
 .modules-right,
 .modules-center {
   border-radius: 6px;
-  background: rgba(40, 40, 40, 0.90);
+  background: #282828;
   margin: 0.5px 2px 0px 2px;
   padding: 5px 5;
 }
