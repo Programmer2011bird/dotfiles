@@ -1,0 +1,9 @@
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+export GTK_THEME="Gruvbox-Teal-Dark"
+export GTK2_RC_FILES=$HOME/.gtkrc-2.0
+export QT_QPA_PLATFORMTHEME=gtk2
+
