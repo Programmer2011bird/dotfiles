@@ -88,6 +88,8 @@
     // "rotate": 90,
     "format-wifi": "{essid}  ",
     "format-disconnected": "Disconnected 󰖪 ",
+    "tooltip": true,
+    "tooltip-format": "{essid} : {ipaddr} ",
   },
   "cpu":{
     // "rotate":90,
