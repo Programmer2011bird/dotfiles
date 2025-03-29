@@ -1,5 +1,5 @@
 return {
-    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
+    {'rebelot/kanagawa.nvim',lazy = false, priority = 1000},
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.8',
         dependencies = { 'nvim-lua/plenary.nvim' }
@@ -17,7 +17,7 @@ return {
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
     {
-        "nvim-treesitter/nvim-treesitter", 
+        "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate"
     },
     {
@@ -33,7 +33,7 @@ return {
     'L3MON4D3/LuaSnip',
         dependencies = {
             'saadparwaiz1/cmp_luasnip',
-            "rafamadriz/friendly-snippets" 
+            "rafamadriz/friendly-snippets"
         }
     },
     {
