@@ -21,12 +21,42 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = "*",
+  callback = function()
+    vim.opt.number = true
+  end,
+})
 --------------------------------------------- Requires ---------------------------------------------
 require("lazy").setup("Plugins")
-require("gruvbox").setup({
-    transparent_mode = true,
+require('kanagawa').setup({
+    compile = false,             -- enable compiling the colorscheme
+    undercurl = true,            -- enable undercurls
+    commentStyle = { italic = true },
+    functionStyle = {},
+    keywordStyle = { italic = true},
+    statementStyle = { bold = true },
+    typeStyle = {},
+    transparent = true,         -- do not set background color
+    dimInactive = false,         -- dim inactive window `:h hl-NormalNC`
+    terminalColors = true,       -- define vim.g.terminal_color_{0,17}
+    colors = {                   -- add/modify theme and palette colors
+        palette = {},
+        theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+    },
+    overrides = function(colors) -- add/modify highlights
+        return {}
+    end,
+    theme = "wave",              -- Load "wave" theme
+    background = {               -- map the value of 'background' option to a theme
+        dark = "wave",           -- try "dragon" !
+        light = "lotus"
+    },
 })
-require('lualine').setup({
+-- setup must be called before loading
+vim.cmd("colorscheme kanagawa")
+
+require("lualine").setup({
     options = { theme = "gruvbox-material" }
 })
 
@@ -58,7 +88,7 @@ require('lspconfig')['html'].setup {
 }
 require("nvim-autopairs").setup({})
 ---------------------------------------------
-vim.cmd("colorscheme gruvbox")
+-- vim.cmd("colorscheme gruvbox")
 --------------------------------------------- Comfy keymaps ---------------------------------------------
 vim.keymap.set('n', '<leader>x', ":bd<CR>", { desc = "close the current buffer" , noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<C-x>', [[<C-\><C-n>]], { noremap = true, silent = true })
@@ -86,7 +116,7 @@ configs.setup({
 cmp.setup({
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body) 
+            require('luasnip').lsp_expand(args.body)
         end,
     },
     window = {
@@ -101,26 +131,26 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.select_next_item()  
+                cmp.select_next_item()
             elseif require('luasnip').expand_or_jumpable() then
-                require('luasnip').expand_or_jump()  
+                require('luasnip').expand_or_jump()
             else
-                fallback() 
+                fallback()
             end
         end, { 'i', 's' }),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.select_prev_item() 
+                cmp.select_prev_item()
             elseif require('luasnip').jumpable(-1) then
                 require('luasnip').jump(-1)
             else
-                fallback()  
+                fallback()
             end
         end, { 'i', 's' }),
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'luasnip' }, 
+        { name = 'luasnip' },
     }, {
             { name = 'buffer' },
         })
@@ -141,4 +171,6 @@ cmp.setup.cmdline(':', {
         }),
     matching = { disallow_symbol_nonprefix_matching = false }
 })
-
+vim.diagnostic.config({
+  signs = false, -- Disable diagnostic signs
+})
