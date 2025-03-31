@@ -44,21 +44,35 @@ require('kanagawa').setup({
         palette = {},
         theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
     },
-    overrides = function(colors) -- add/modify highlights
-        return {}
-    end,
     theme = "wave",              -- Load "wave" theme
     background = {               -- map the value of 'background' option to a theme
-        dark = "wave",           -- try "dragon" !
+        dark = "dragon",           -- try "dragon" !
         light = "lotus"
     },
 })
 -- setup must be called before loading
 vim.cmd("colorscheme kanagawa")
 
-require("lualine").setup({
-    options = { theme = "gruvbox-material" }
+require('lualine').setup({
+    options = {
+        theme = {
+            normal = {
+            a = { bg = '#222226', fg = '#DCD7BA' },  -- Mode section
+            b = { bg = '#393836', fg = '#7E9CD8' },  -- Git/Filetype
+            c = { bg = '#393836', fg = '#DCD7BA' }   -- Filename
+          },
+          insert = { a = { bg = '#6A9589', fg = '#0D0C0A' } },  -- Green
+          visual = { a = { bg = '#E82424', fg = '#0D0C0A' } },  -- Red
+        }
+    },
+    sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff'},
+        lualine_c = {'filename'},
+        lualine_x = {'encoding', 'filetype'},
+    }
 })
+
 
 require("nvim-tree").setup({
   sort = {
