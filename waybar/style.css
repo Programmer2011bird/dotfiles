@@ -1,19 +1,25 @@
 * {
-  border: none;
   font-family: "JetBrainMono Nerd Font Mono";
   font-size: 13px;
   font-weight: 600;
-  background: none;
+  background: rgba(40, 39, 39, 0.3);
 }
 
-window#waybar {
+/*window#waybar {
+  border: solid 2px #658594;
+  border-radius: 16px;
   color: #bdae93;
-}
+}*/
+
+/* Now REMOVE borders from all nested elements */
+#waybar, #waybar > box { border: 1px solid #658594; border-radius: 10px }
+
 .modules-left,
 .modules-right,
 .modules-center {
   border-radius: 6px;
-  background: rgba(40, 40, 40, 0.90);
+  /* background: #282727; */
+  background: none;
   margin: 0.5px 2px 0px 2px;
   padding: 5px 5;
 }
@@ -28,6 +34,7 @@ tooltip * {
 }
 .modules-center {
     padding: 2px 20px 2px 20px;
+    background: none;
     /* margin: 2px 2px 2px 2px; */
 }
 #custom-sep {
@@ -36,33 +43,33 @@ tooltip * {
 }
 #workspaces,
 #clock,
-#custom-bluetooth_devices,
 #custom-powermenu,
 #pulseaudio,
 #tray {
+    background: none;
 }
 #workspaces {
-  border-radius: 4px;
+  border-radius: 5px;
+  border: solid 0.3px #e98a00;
 }
 #workspaces button {
-  color: #d79921;
+  color: #b98d7b;
   background: none;
   padding: 0;
 }
-#workspaces button:hover {
-  color: #d79921;
-}
 #workspaces button.active {
-  color: #d65d0e;
+  color: #658594;
 }
 #clock {
   font-weight: 600;
   color: #bdae93;
+  background: none;
 }
 #pulseaudio {
-  color: #98971a;
+  color: #7BA696;
+  background: none;
 }
-#custom-powermenu {
-  margin: 0px 4 0 4;
-  color: #fb4934;
+#custom-arch {
+    color: #008080;
+    background: none;
 }
