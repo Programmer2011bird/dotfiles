@@ -1,37 +1,48 @@
 {
   "layer": "top",
   "position": "top",
+  "margin-left":4,
+  "margin-right":4,
+  "margin-top":2,
+  "margin-bottom":2,
   "spacing": 1,
+  "css": "~/.config/waybar/style.css",  // Point to your CSS file
   "modules-left": [
-    "hyprland/workspaces",
+      "custom/arch",
+      "custom/sep",
+      "cpu",
+      "custom/sep",
+      "memory",
+      "custom/sep",
+      "battery"
+  ],
+  "modules-center": [
+      "clock"
+  ],
+  "modules-right": [
+      "hyprland/workspaces",
+    "custom/sep",
+    "tray",
+    "custom/sep",
+    "hyprland/language",
     "custom/sep",
     "network",
     "custom/sep",
-    "tray",
+    "pulseaudio"
   ],
-  "modules-center": [
-    "clock",
-  ],
-  "modules-right": [
-    "battery",
-    "custom/sep",
-    "cpu",
-    "custom/sep",
-    "memory",
-    "custom/sep",
-    "pulseaudio",
-    "custom/powermenu"
-  ],
+  "custom/arch": {
+    "format": " 󰣇 ",
+    "on-click": "cd ~/.config/waybar/scripts && ./rofi-powermenu.sh",
+    "tooltip": false
+  },
   "custom/sep": {
     "format": "|"
   },
-  "custom/powermenu": {
-    "on-click": "cd ~/.config/waybar/scripts && ./rofi-powermenu.sh",
-    "format": "",
-    "tooltip": false
+  "hyprland/language": {
+      "format": "{short}",
   },
   "hyprland/workspaces": {
-    "format": "{name}",
+    "format": " {name} ",
     "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e-1",
     "on-scroll-down": "hyprctl dispatch workspace e+1",
@@ -43,11 +54,11 @@
   },
   "clock": {
     "tooltip": true,
-    "format": "{:%H:%M}",
-    "tooltip-format": "{:%Y-%m-%d}",
+    "format": "󰃰  {:%H:%M - %a  %d %b %Y}",
+    "tooltip-format": "{calendar}"
   },
   "tray": {
-    "icon-size": 18,
+    "icon-size": 15,
     "show-passive-items": "true"
   },
   "pulseaudio": {
@@ -57,8 +68,8 @@
     "format-muted": "MUTE ",
     "format-icons": {
       "default": [
-        "",
-        ""
+        " ",
+        " "
       ]
     },
     "scroll-step": 3,
@@ -82,14 +93,14 @@
         ]
     },
     "format": "{icon}   {capacity}%",
-    "format-charging": "  {capacity}%",
+    "format-charging": "  {capacity}%"
   },
   "network": {
     // "rotate": 90,
     "format-wifi": "{essid}  ",
     "format-disconnected": "Disconnected 󰖪 ",
     "tooltip": true,
-    "tooltip-format": "{essid} : {ipaddr} ",
+    "tooltip-format": "{essid} : {ipaddr} "
   },
   "cpu":{
     // "rotate":90,
@@ -98,5 +109,5 @@
   "memory":{
     // "rotate":90,
     "format":"   {}%"
-  },
+  }
 }
