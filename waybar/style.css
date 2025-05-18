@@ -21,6 +21,7 @@
   /* background: #282727; */
   background: none;
   margin: 0.5px 2px 0px 2px;
+  color:#bdae93;
   padding: 5px 5;
 }
 tooltip {
@@ -47,6 +48,7 @@ tooltip * {
 #pulseaudio,
 #tray {
     background: none;
+    color:#bdae93;
 }
 #workspaces {
   border-radius: 5px;
