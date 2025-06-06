@@ -94,6 +94,26 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require('lspconfig')['lua_ls'].setup {
     capabilities = capabilities
 }
+
+-- local rt = require("rust-tools")
+-- rt.setup({
+--     server = {
+--         settings = {
+--             ["rust-analyzer"] = {
+--                 checkOnSave = true,  -- Enable basic checkOnSave (boolean)
+--                 -- OR for advanced Clippy integration:
+--                 -- checkOnSave = {
+--                     -- command = "clippy",  -- Must be nested under `check`
+--                     -- extraArgs = { "--all-targets" },
+--                 -- },
+--             },
+--         },
+--     },
+-- })
+
+-- require('lspconfig')['rust-analyzer'].setup {
+    -- capabilities = capabilities
+-- }
 require('lspconfig')['pyright'].setup {
     capabilities = capabilities
 }
