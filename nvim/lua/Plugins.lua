@@ -29,6 +29,24 @@ return {
         "hrsh7th/nvim-cmp",
         "hrsh7th/cmp-nvim-lsp"
     },
+    -- {
+    --     "simrat39/rust-tools.nvim",
+    --     dependencies = {
+    --         "neovim/nvim-lspconfig",
+    --         "nvim-lua/plenary.nvim",  -- Required for some features
+    --     },
+    --     ft = { "rust" },  -- Load only for Rust files
+    --     opts = function()
+    --         return {
+    --             -- Your rust-tools config here (see below)
+    --         }
+    --     end,
+    -- },
+    {
+        'mrcjkb/rustaceanvim',
+        version = '^6', -- Recommended
+        lazy = false
+    },
     {
     'L3MON4D3/LuaSnip',
         dependencies = {
