@@ -29,6 +29,14 @@ return {
         "hrsh7th/nvim-cmp",
         "hrsh7th/cmp-nvim-lsp"
     },
+    {
+        "iamcco/markdown-preview.nvim",
+        build = "cd app && npm install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
+    },
     -- {
     --     "simrat39/rust-tools.nvim",
     --     dependencies = {
