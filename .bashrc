@@ -19,9 +19,8 @@ if [[ -z "$TMUX" ]]; then
     fi
 fi
 
-eval "$(oh-my-posh init bash --config ~/.config/.poshthemes/theUnnamed.omp.json)"
+eval "$(oh-my-posh init bash --config ~/.config/poshthemes/emodipt-extend.omp.json)"
 
-export GTK_THEME=gruvbox-dark-gtk
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+. "$HOME/.cargo/env"
 
-neofetch 
+fastfetch
