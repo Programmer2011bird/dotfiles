@@ -4,6 +4,7 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias yay='yay --color=auto'
+alias pacman='sudo pacman --color=auto'
 # alias pacman='yay --color=auto'
 PS1='[\u@\h \W]\$ '
 
