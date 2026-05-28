@@ -29,29 +29,66 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 --------------------------------------------- Requires ---------------------------------------------
 require("lazy").setup("Plugins")
-require('kanagawa').setup({
-    compile = false,             -- enable compiling the colorscheme
-    undercurl = true,            -- enable undercurls
-    commentStyle = { italic = true },
-    functionStyle = {},
-    keywordStyle = { italic = true},
-    statementStyle = { bold = true },
-    typeStyle = {},
-    transparent = true,         -- do not set background color
-    dimInactive = false,         -- dim inactive window `:h hl-NormalNC`
-    terminalColors = true,       -- define vim.g.terminal_color_{0,17}
-    colors = {                   -- add/modify theme and palette colors
-        palette = {},
-        theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-    },
-    theme = "wave",              -- Load "wave" theme
-    background = {               -- map the value of 'background' option to a theme
-        dark = "dragon",           -- try "dragon" !
-        light = "lotus"
-    },
+
+-- Add this after your theme loads
+--------------------------------------------- Safe Transparency ---------------------------------------------
+local function safe_transparency()
+    -- Only these groups should have transparent backgrounds
+    local transparent_groups = {
+        "Normal", "NormalNC", "NormalFloat",
+        "LineNr", "SignColumn", "EndOfBuffer", "FoldColumn",
+        "StatusLine", "StatusLineNC", "TabLine", "TabLineFill",
+        "TelescopeNormal", "TelescopeBorder",
+        "NvimTreeNormal", "NvimTreeWinSeparator"
+    }
+    
+    for _, group in ipairs(transparent_groups) do
+        pcall(function()
+            local current = vim.api.nvim_get_hl(0, { name = group })
+            if current then
+                -- Preserve foreground and other attributes, only change background
+                vim.api.nvim_set_hl(0, group, {
+                    bg = "none",
+                    fg = current.fg,
+                    bold = current.bold,
+                    italic = current.italic,
+                    underline = current.underline,
+                })
+            end
+        end)
+    end
+end
+
+-- Run after theme loads
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = safe_transparency,
 })
+
+vim.api.nvim_exec_autocmds("ColorScheme", {})
+-- require('everforest').setup({
+    -- compile = false,             -- enable compiling the colorscheme
+    -- undercurl = true,            -- enable undercurls
+    -- commentStyle = { italic = true },
+    -- functionStyle = {},
+    -- keywordStyle = { italic = true},
+    --statementStyle = { bold = true },
+    -- typeStyle = {},
+    -- transparent = true,         -- do not set background color
+    -- dimInactive = false,         -- dim inactive window `:h hl-NormalNC`
+    -- terminalColors = true,       -- define vim.g.terminal_color_{0,17}
+    -- colors = {                   -- add/modify theme and palette colors
+        -- palette = {},
+        -- theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+    -- },
+    -- theme = "wave",              -- Load "wave" theme
+    -- background = {               -- map the value of 'background' option to a theme
+        -- dark = "dragon",           -- try "dragon" !
+        -- light = "lotus"
+    -- },
+-- })
 -- setup must be called before loading
-vim.cmd("colorscheme kanagawa")
+-- vim.cmd("colorscheme everforest")
 
 require('lualine').setup({
     options = {
