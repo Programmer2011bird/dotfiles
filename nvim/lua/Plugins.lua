@@ -36,12 +36,34 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate"
+        build = ":TSUpdate",
+        opts = {
+            ensure_installed = {
+                "lua",
+                "python",
+                "vim",
+                "vimdoc",
+                "query"
+            },
+            sync_install = false,
+            auto_install = true,  -- Automatically install missing parsers
+            highlight = {
+                enable = true,
+                disable = {},  -- Don't disable any languages
+                additional_vim_regex_highlighting = false,
+            },
+            indent = { enable = true },
+        },
     },
     {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
+    },
+    {
+        "neovim/nvim-lspconfig",
+        tag = "v2.5.0",  -- Last version supporting 0.10
+        dependencies = { "williamboman/mason-lspconfig.nvim" },
     },
     {
         "hrsh7th/nvim-cmp",
@@ -100,5 +122,52 @@ return {
             alpha.setup(dashboard.opts)
         end,
     },
-    { "windwp/nvim-autopairs", lazy = true }
+    { "windwp/nvim-autopairs", lazy = true },
+    {
+        "VonHeikemen/lsp-zero.nvim",
+        branch = "v3.x",
+        dependencies = {
+            -- LSP Support
+            {"neovim/nvim-lspconfig"},
+            {"williamboman/mason.nvim"},
+            {"williamboman/mason-lspconfig.nvim"},
+
+            -- Autocompletion
+            {"hrsh7th/nvim-cmp"},
+            {"hrsh7th/cmp-nvim-lsp"},
+            {"hrsh7th/cmp-buffer"},
+            {"hrsh7th/cmp-path"},
+            {"saadparwaiz1/cmp_luasnip"},
+            {"L3MON4D3/LuaSnip"},
+        },
+        config = function()
+            local lsp_zero = require("lsp-zero")
+
+            lsp_zero.extend_lspconfig({
+                sign_text = true,
+                lsp_attach = function(client, bufnr)
+                    -- keymaps
+                    local opts = { buffer = bufnr }
+                    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                    vim.keymap.set("n", "ca", vim.lsp.buf.code_action, opts)
+                end
+            })
+
+            -- Setup mason to install LSP servers
+            require("mason").setup({})
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "lua_ls",
+                    "pyright",
+                    "html",
+                    -- add more servers
+                },
+                handlers = {
+                    lsp_zero.default_setup,
+                }
+            })
+        end,
+    },
 }
