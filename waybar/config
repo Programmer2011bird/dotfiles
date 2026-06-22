@@ -8,7 +8,7 @@
   "spacing": 1,
   "css": "~/.config/waybar/style.css",  // Point to your CSS file
   "modules-left": [
-      "custom/arch",
+      "custom/debian",
       "custom/sep",
       "cpu",
       "custom/sep",
@@ -17,7 +17,9 @@
       "battery"
   ],
   "modules-center": [
-      "clock"
+      "clock",
+        "custom/sep",
+      "custom/weather"
   ],
   "modules-right": [
       "hyprland/workspaces",
@@ -30,8 +32,8 @@
     "custom/sep",
     "pulseaudio"
   ],
-  "custom/arch": {
-    "format": " 󰣇 ",
+  "custom/debian": {
+    "format": "  ",
     "on-click": "cd ~/.config/waybar/scripts && ./rofi-powermenu.sh",
     "tooltip": false
   },
@@ -39,7 +41,7 @@
     "format": "|"
   },
   "hyprland/language": {
-      "format": "{short}",
+      "format": "{short}"
   },
   "hyprland/workspaces": {
     "format": " {name} ",
@@ -54,8 +56,14 @@
   },
   "clock": {
     "tooltip": true,
-    "format": "󰃰  {:%H:%M - %a  %d %b %Y}",
+    "format": "󰃰  {:%H:%M - %a  %d %b %Y} ",
     "tooltip-format": "{calendar}"
+  },
+  "custom/weather": {
+      "exec": "~/.config/waybar/scripts/weather.sh",
+      "interval": 600,
+      "return-type": "json",
+      "tooltip": true
   },
   "tray": {
     "icon-size": 15,
