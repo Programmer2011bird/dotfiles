@@ -1,12 +1,12 @@
-# ~/.bashrc
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias yay='yay --color=auto'
-alias pacman='sudo pacman --color=auto'
 # alias pacman='yay --color=auto'
 PS1='[\u@\h \W]\$ '
+
+# Initialize oh-my-posh FIRST
+eval "$(/home/termitech/.local/bin/oh-my-posh init bash --config ~/.config/poshthemes/emodipt-extend.omp.json)"
 
 # Automatically start tmux if not already in a tmux session
 if [[ -z "$TMUX" ]]; then
@@ -16,12 +16,11 @@ if [[ -z "$TMUX" ]]; then
         tmux attach-session
     else
         # Start a new tmux session
-        tmux new-session 
+        tmux new-session
     fi
 fi
 
-eval "$(oh-my-posh init bash --config ~/.config/poshthemes/emodipt-extend.omp.json)"
-
-. "$HOME/.cargo/env"
-
+# eval "$(oh-my-posh init bash --config ~/.config/poshthemes/emodipt-extend.omp.json)"
+# . "$HOME/.cargo/env"
+#
 fastfetch
