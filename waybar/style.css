@@ -1,5 +1,5 @@
 * {
-  font-family: "JetBrainMono Nerd Font Mono";
+  font-family: "JetBrains Mono NL Light", "JetBrainsMono Nerd Font", "JetBrains Mono", sans-serif;
   font-size: 13px;
   font-weight: 600;
   background: rgba(40, 39, 39, 0.3);
@@ -71,7 +71,7 @@ tooltip * {
   color: #7BA696;
   background: none;
 }
-#custom-arch {
-    color: #008080;
+#custom-debian {
+    color: #CE0056;
     background: none;
 }
