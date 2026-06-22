@@ -229,6 +229,15 @@ vim.diagnostic.config({
     signs = false,
 })
 
+-- Force enable Treesitter for Python
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    vim.bo.syntax = "on"
+    pcall(vim.treesitter.start)
+  end,
+})
+
 --------------------------------------------- Comfy keymaps ---------------------------------------------
 vim.keymap.set('n', '<leader>x', ":bd<CR>", { desc = "close the current buffer" , noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<C-x>', [[<C-\><C-n>]], { noremap = true, silent = true })
@@ -250,3 +259,4 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+
